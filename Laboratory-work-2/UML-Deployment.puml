@@ -1,0 +1,18 @@
+@startuml
+left to right direction
+
+actor User
+node "Desktop" {
+    node "Game Client" as GameClient
+    node "Unity Engine" as UnityEngine
+    node "Game Files" as GameFiles
+}
+database "Remote Server" as RemoteServer {
+    [Unity Analytics]
+}
+
+User -- GameClient : Play
+GameClient --> UnityEngine : User Inputs
+UnityEngine <--> GameFiles : Game Assets
+UnityEngine --> RemoteServer : Analytics Data
+@enduml
